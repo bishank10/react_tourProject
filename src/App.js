@@ -9,6 +9,11 @@ function App() {
   const [tours,setTours]=useState([]);
   const [loading,setLoading]=useState(true);
 
+  const removeTour = (id)=>{
+    const newTour = tours.filter((tour)=> tour.id !== id)
+    setTours(newTour);
+  }
+
   const fetchTours = async()=> {
     setLoading(true);;
   
@@ -35,7 +40,7 @@ function App() {
   }
 
   return (<main>
-    <Tours tours={tours} />
+    <Tours tours={tours}  removeTour={removeTour}/>
   </main>)
 }
 
